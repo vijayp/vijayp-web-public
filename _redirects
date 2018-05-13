@@ -1,4 +1,5 @@
 /blog http://old.vijayp.ca/blog
+/blog/* http://old.vijayp.ca/blog/:splat
 /egov_paper.pdf http://old.vijayp.ca/egov_paper.pdf
 
 
