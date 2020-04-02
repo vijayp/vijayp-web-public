@@ -87,7 +87,7 @@
 
 	  img.src = canvas.toDataURL('image/webp');
 	  var rndstring = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-	  var uploadTask = storageRef.child('images/' + rndstring).put(img.src);
+      canvas.toBlob(function(blob) { storageRef.child('images/' + rndstring).put(blob);});
 
 	  $('.videostream').hide();
 	  $('.capture-button').hide();
