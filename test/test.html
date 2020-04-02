@@ -4,14 +4,30 @@
 	<head></head>
 <body>
 
-	<h1> hello </h1>
+	<h1> please take a photo of a thermometer </h1>
+    <h2> try to get the display in the box</h2>
 	<img src="">
+
+
+
+
 	<canvas style="display:none;"></canvas>
 
-	<div id="screenshot" style="text-align:center;">
 
-    <div id="videoContainer">
-      <div id="box"></div>
+
+	<div id="screenshot" style="text-align:center;">
+    <div id="videoContainer" style="position:relative;">
+      <div id="box" style="
+        position: absolute;
+        vertical-align: middle;
+        top: 30%;
+        left: 25%;
+        width: 50%;
+        height: 30%;
+        border:2px solid #ffffff;
+        background-color:transparent;
+        z-index: 88888;"></div>
+
       <video class="videostream" autoplay loop muted playsinline></video>
     </div>
 
