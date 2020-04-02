@@ -100,7 +100,8 @@
 	};
 
 	function handleSuccess(stream) {
-		$('.videostream').hide();
+        $('.videostream').show();
+        $('#capture-button').show();
 		$('#screenshot-button').show();
 	  video.srcObject = stream;
 	}
