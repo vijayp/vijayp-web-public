@@ -1,5 +1,6 @@
 <html>
-<head></head>
+	<script   src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script> 
+	<head></head>
 <body>
 	<h1> hello </h1>
 	<img src="">
@@ -53,11 +54,19 @@
 	  canvas.getContext('2d').drawImage(video, 0, 0);
 	  // Other browsers will fall back to image/png
 	  img.src = canvas.toDataURL('image/webp');
+	  $('.videostream').hide();
+
+	  // TODO: ask if this photo is ok?
+	  // then submit this to a server here!
+
 	};
 
 	function handleSuccess(stream) {
 	  screenshotButton.disabled = false;
 	  video.srcObject = stream;
 	}
+	$(document).ready(function() {
+		$('#screenshot-button').hide();
+	});
 	</script>
 	</html>
