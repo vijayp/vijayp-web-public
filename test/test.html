@@ -87,15 +87,16 @@
 
 	  img.src = canvas.toDataURL('image/webp');
 	  var rndstring = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-      canvas.toBlob(function(blob) { storageRef.child('images/' + rndstring).put(blob);});
+      canvas.toBlob(function(blob) { 
+        storageRef.child('images/' + rndstring).put(blob).then(function() {
+            $('#screenshot').remove();
+            $(document.body).append("<h1> thanks for uploading an image</h1>");
+        });
+
+    });
 
 	  $('.videostream').hide();
 	  $('.capture-button').hide();
-	  $('#send-data-button').show();		
-	  $('#send-data-button').onclick(function() {
-	  	var image_data = $('#screenshot-img').attr('src');
-
-	  });
 	  // TODO: ask if this photo is ok?
 	  // then submit this to a server here!
 
