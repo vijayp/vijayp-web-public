@@ -9,7 +9,14 @@
 	<canvas style="display:none;"></canvas>
 
 	<div id="screenshot" style="text-align:center;">
-	  <video class="videostream" autoplay loop muted playsinline></video>
+
+    <div id="videoContainer">
+      <div id="box"></div>
+      <video class="videostream" autoplay loop muted playsinline></video>
+    </div>
+
+
+
 	  <img id="screenshot-img">
 	  <p><button class="capture-button">Capture video</button>
 	  </p><p><button id="screenshot-button">Send photo</button></p>
@@ -22,8 +29,6 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
-
-
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -56,7 +61,8 @@
 	}	
 
 	const hdConstraints = {
-	  video: {width: {min: 1280}, height: {min: 720}}
+	  video: {width: {min: 1280}, height: {min: 720}, facingMode: "environment"}
+
 	};	
 
 	var handleError = function(x) {
