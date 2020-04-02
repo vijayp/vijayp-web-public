@@ -62,7 +62,7 @@
 	};
 
 	function handleSuccess(stream) {
-	  screenshotButton.disabled = false;
+		$('#screenshot-button').show();
 	  video.srcObject = stream;
 	}
 	$(document).ready(function() {
