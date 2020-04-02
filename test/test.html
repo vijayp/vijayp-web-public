@@ -1,7 +1,9 @@
 <html>
+
 	<script   src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script> 
 	<head></head>
 <body>
+
 	<h1> hello </h1>
 	<img src="">
 	<canvas style="display:none;"></canvas>
@@ -10,8 +12,32 @@
 	  <video class="videostream" autoplay loop muted playsinline></video>
 	  <img id="screenshot-img">
 	  <p><button class="capture-button">Capture video</button>
-	  </p><p><button id="screenshot-button">Take screenshot</button></p>
+	  </p><p><button id="screenshot-button">Send photo</button></p>
+	  </p><p><button id="send-data-button">Send Data</button></p>	  
 	</div>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD7-2mNii030wbXbCRYRpMnfGt8lWxz1qA",
+    authDomain: "positivity-171701.firebaseapp.com",
+    databaseURL: "https://positivity-171701.firebaseio.com",
+    projectId: "positivity-171701",
+    storageBucket: "positivity-171701.appspot.com",
+    messagingSenderId: "240848550285",
+    appId: "1:240848550285:web:80721ea8be8ef5be0b65c4",
+    measurementId: "G-KVKP98L6X8"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 
 </body>
 
@@ -53,20 +79,35 @@
 	  canvas.height = video.videoHeight;
 	  canvas.getContext('2d').drawImage(video, 0, 0);
 	  // Other browsers will fall back to image/png
-	  img.src = canvas.toDataURL('image/webp');
-	  $('.videostream').hide();
 
+   	// Create a root reference
+		var storageRef = firebase.storage().ref();
+
+	  img.src = canvas.toDataURL('image/webp');
+	  var rndstring = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+	  var uploadTask = storageRef.child('images/' + rndstring).put(img.src);
+
+	  $('.videostream').hide();
+	  $('.capture-button').hide();
+	  $('#send-data-button').show();		
+	  $('#send-data-button').onclick(function() {
+	  	var image_data = $('#screenshot-img').attr('src');
+
+	  });
 	  // TODO: ask if this photo is ok?
 	  // then submit this to a server here!
 
 	};
 
 	function handleSuccess(stream) {
+		$('.videostream').hide();
 		$('#screenshot-button').show();
 	  video.srcObject = stream;
 	}
+
 	$(document).ready(function() {
 		$('#screenshot-button').hide();
+		$('#send-data-button').hide();		
 	});
 	</script>
 	</html>
