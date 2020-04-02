@@ -43,8 +43,6 @@ const hdConstraints = {
 navigator.mediaDevices.getUserMedia(hdConstraints).
   then((stream) => {video.srcObject = stream});
 
-...
-
 const vgaConstraints = {
   video: {width: {exact: 640}, height: {exact: 480}}
 };
@@ -109,7 +107,7 @@ function handleError(error) {
   console.error('Error: ', error);
 }
 
-	  
+
 	const captureVideoButton =
 	  document.querySelector('#screenshot .capture-button');
 	const screenshotButton = document.querySelector('#screenshot-button');
